@@ -240,7 +240,11 @@ function askTimeToMeet() {
           action: () => {
             localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
             localStorage.setItem('selectedTexts', JSON.stringify(selectedTexts));
-            window.location.href = 'result.html';
+
+            setTimeout(() => {
+              localStorage.setItem('perspective', 'his');
+              window.location.href = 'boy_result.html';
+            }, 2000);
           }
         },
         {
@@ -250,7 +254,11 @@ function askTimeToMeet() {
           action: () => {
             localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
             localStorage.setItem('selectedTexts', JSON.stringify(selectedTexts));
-            window.location.href = 'result.html';
+
+            setTimeout(() => {
+              localStorage.setItem('perspective', 'his');
+              window.location.href = 'boy_result.html';
+            }, 2000);
           }
         },
         {
@@ -260,7 +268,11 @@ function askTimeToMeet() {
           action: () => {
             localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
             localStorage.setItem('selectedTexts', JSON.stringify(selectedTexts));
-            window.location.href = 'result.html';
+
+            setTimeout(() => {
+              localStorage.setItem('perspective', 'his');
+              window.location.href = 'boy_result.html';
+            }, 2000);
           }
         }
       ]);

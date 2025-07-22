@@ -1,0 +1,402 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f5f8fb;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-wrapper {
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid #ccc;
+  background-color: #D0DAE4;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+#chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bubble-left,
+.bubble-right {
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  max-width: 70%;
+  word-break: break-word;
+}
+
+.bubble-left {
+  align-self: flex-start;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+}
+
+.bubble-right {
+  align-self: flex-end;
+  background-color: #8DD332;
+}
+
+.input-area {
+  display: flex;
+  padding: 0.5rem;
+  background-color: white;
+  border-top: 1px solid #ccc;
+}
+
+#userInput {
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+#sendBtn {
+  margin-left: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #00c3ff;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.choice-bubble {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  max-width: 80%;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.choice-question {
+  margin-bottom: 0.5rem;
+}
+
+.choice-option {
+  color: #6d84b4;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 10px;
+}
+
+.choice-option:hover {
+  background-color: #f0f0f0;
+}
+.name-label {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 4px 8px;
+  padding-left: 4px;
+}
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.message-wrapper.left {
+  align-self: flex-start;
+}
+
+.message-wrapper.right {
+  align-self: flex-end;
+}
+
+.name-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+  padding: 0 4px;
+}
+
+.message-wrapper.right .name-label {
+  text-align: right;
+}
+
+.choice {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+  box-sizing: border-box; /* ★ これを追加！ */
+}
+
+
+
+.choice:hover {
+  background-color: #f0f0f0;       /* ホバー時の背景色 */
+}
+#choices-container {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+
+  box-sizing: border-box; /* ★ これを追加！ */
+}
+
+.tameae {
+  display: inline;
+}
+
+.honne {
+  display: none;
+  color: #888;
+  font-style: italic;
+}
+
+.bubble-left:hover .tameae {
+  display: none;
+}
+
+.bubble-left:hover .honne {
+  display: inline;
+}
+
+.honne {
+  display: inline-block;
+  color: #000000;
+  position: relative;
+  white-space: pre-wrap;
+}
+
+.fade-out {
+  animation: strikeFade 1s forwards;
+}
+
+@keyframes strikeFade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    text-decoration: line-through;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeInChar {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* チャット画面コンテナ */
+.result-container {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #D0DAE4;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* チャットバブルが入るエリア */
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 80px;
+  padding-top: 20px;
+}
+
+/* 「言えなかった言葉」のUI */
+#whisper-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+#whisper-container h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+#whisper-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#whisper-submit {
+  align-self: flex-end;
+  padding: 6px 16px;
+  background-color: #8DD332;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#whisper-submit:hover {
+  background-color: #7ac02e;
+}
+
+/* 浮かぶ「言えなかった言葉」 */
+#whisper-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.whisper-text {
+  position: absolute;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  animation: floatUp 6s ease-in-out forwards;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+/* ▼ 一文字ずつループ書き込み用アニメーション */
+@keyframes typewriterLoop {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    width: 100%;
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.typewriter-loop {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #333;
+  white-space: nowrap;
+  animation: typewriterLoop 5s steps(30, end) infinite;
+}
+
+/* ▼ グラフ描画エリア */
+#chart-container {
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+#result-chart {
+  width: 100%;
+  height: auto;
+}
+
+/* ▼ 最後に進む場所選択（彼氏視点・彼女視点ボタン） */
+#next-choice {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.choice-button {
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border: 2px solid #8DD332;
+  color: #8DD332;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-button:hover {
+  background-color: #8DD332;
+  color: white;
+}

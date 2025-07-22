@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>診断結果</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js の読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header>診断結果</header>
+
+    <!-- チャットバブルを入れる -->
+    <div id="chat-container" class="chat-container"></div>
+
+    <!-- グラフ描画用 -->
+    <canvas id="result-chart" width="300" height="200"></canvas>
+
+    <!-- 最後の言葉入力 -->
+    <div id="whisper-container">
+      <h2>言えなかった言葉を打ち込んでください</h2>
+      <input type="text" id="whisper-input" placeholder="ここに入力…" />
+      <button id="whisper-submit">送信</button>
+    </div>
+    <div id="whisper-layer"></div>
+  </div>
+
+  <script src="result.js"></script>
+</body>
+</html>
